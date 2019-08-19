@@ -1,3 +1,6 @@
+import os
+
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -8,6 +11,10 @@ class User(db.Model):
     username = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
 
+    def add_user(self):
+        db.session.add(self)
+        db.session.commit()
+
 
 class Book(db.Model):
     __tablename__= "books"
@@ -15,6 +22,7 @@ class Book(db.Model):
     isbn = db.Column(db.String, nullable=False)
     title = db.Column(db.String, nullable=False)
     author = db.Column(db.String, nullable=False)
+    year = db.Column(db.String, nullable=False)
 
 class Review(db.Model):
     __tablename__= "reviews"
