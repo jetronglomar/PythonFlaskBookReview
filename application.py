@@ -9,7 +9,8 @@ db.init_app(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    books = Book.query.limit(6).all()
+    return render_template("index.html", books=books)
 
 @app.route("/login")
 def login():

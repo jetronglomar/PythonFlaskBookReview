@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>All Books</h1>
+    <h1>Featured Books</h1>
 
     <!-- <ul>
         {% for flight in flights %}
@@ -16,5 +16,20 @@
             </li>
         {% endfor %}
     </ul> -->
+    <div class="row">
+        {% for book in books %}
+            <div class="col-sm-6 col-md-4 col-xs-12">
+                    <div class="card">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ book.title }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ book.year }}</h6>
+                            <p class="card-text">{{ book.author }}</p>
+                            </div>
+                    </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
 
 {% endblock %}
